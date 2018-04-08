@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Simple DS Widget</title>
+  <meta http-equiv="pragma" content="no-cache" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="css/staff.css" />
+  <script type="text/javascript" src="scripts/jquery-1.5.1.min.js"></script>
+  <script src="scripts/controller_v2.js"></script>
+  <script src="scripts/staff.js"></script>
+
+  <script type="text/javascript">
+    // The following function will be called when page has been loaded
+    $(function() {
+      // hook up widget client event
+      qmatic.webwidget.client.setOnLoaded(controller.onLoaded);
+      qmatic.webwidget.client.setOnLoadError(controller.onLoadError);
+    });
+  </script>
+
+</head>
+
+<body style="overflow: hidden;" class="container">
+    <!-- Slideshow container -->
+  <div class="staff-buttons-container">
+    <div class="staff-info">
+      <div class="staff-name">
+        <span id="first-name">Magdaléna</span><br/>
+        <span id="last-name">Grigová</span>
+      </div>
+      <div class="workstation">
+        Pracovisko 1
+      </div>
+    </div>
+    <div class="staff-profile">
+      <img src="images/default.jpg" />
+    </div>
+  </div>
+</body>
+
+</html>
