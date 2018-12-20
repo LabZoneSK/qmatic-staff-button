@@ -3,7 +3,7 @@ var controller = (function($) {
   var wwClient = qmatic.webwidget.client;
   var wwRest = qmatic.connector.client;
 
-  function fillStaffData (staffData) {
+  function fillStaffData (staffData, button) {
     makeOpen();
     const worstationEl = $('.workstation');
 
@@ -12,19 +12,21 @@ var controller = (function($) {
       
       $('.staff-buttons-container').click(function() {
         const VIPLevel = staffData.name.match(/\d+$/)[0];
-        handleClick(VIPLevel);
+        handleClick(VIPLevel, button);
       });
     }
   }
 
   function makeOpen() {
     $('.staff-info').removeClass('closed');
+    $('#icon-img').attr('src', 'images/check.png');
     $('.staff-profile').removeClass('closed');
   }
 
   function makeClosed() {
     $('.staff-info').addClass('closed');
     $('.staff-profile').addClass('closed');
+    $('#icon-img').attr('src', 'images/cross.png');
     $('.staff-buttons-container').unbind( "click" );;
     const staffLastName = $('#last-name').text();
 
@@ -35,8 +37,8 @@ var controller = (function($) {
     }
   }
 
-  function handleClick(VIPLevel) {
-    var btn =  parent.document.getElementById('button_1');
+  function handleClick(VIPLevel, button) {
+    var btn =  parent.document.getElementById(button);
       
     wwClient.putDataIntoAppCache("level","VIP Level " + VIPLevel);
 
@@ -47,7 +49,7 @@ var controller = (function($) {
     
   }
 
-  function initializeWidget(lastName) {
+  function initializeWidget(lastName, button) {
     const branchId = wwClient.getBranchId();
     const servicePointMI = wwRest.getServicePointData(branchId);
     
@@ -65,7 +67,7 @@ var controller = (function($) {
       }
 
       if(servicePointForStaff) {
-        fillStaffData(servicePointForStaff);
+        fillStaffData(servicePointForStaff, button);
       } else {
         makeClosed();
       }
@@ -89,9 +91,9 @@ var controller = (function($) {
       document.getElementById('first-name').innerText = firstName;
       document.getElementById('last-name').innerText = lastName;
 
-      initializeWidget(lastName);
+      initializeWidget(lastName, button);
       setInterval(function () {
-        initializeWidget(lastName);
+        initializeWidget(lastName, button);
       }, 50000);
     },
 

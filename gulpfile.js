@@ -43,3 +43,7 @@ gulp.task('build', (cb) => {
     cb
   )
 });
+
+gulp.task('watch-dev', () => {
+  gulp.watch('./src/**', ['styles', 'copy', 'scripts']);
+})

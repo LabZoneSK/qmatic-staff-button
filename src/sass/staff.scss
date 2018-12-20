@@ -1,60 +1,69 @@
 $padding: 10px;
-
-* {box-sizing:border-box}
+* {
+  box-sizing: border-box
+}
 
 body {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 
-div,p,span, img {
+div,
+p,
+span,
+img {
   -webkit-touch-callout: none;
   user-select: none;
-  user-drag: none; 
+  user-drag: none;
   -webkit-user-drag: none;
 }
+
 /* Slideshow container */
+
 .staff-buttons-container {
   padding: $padding;
 }
 
 .staff-info {
+  position: relative;
   float: left;
-  padding: $padding 15px;
-  background-color: #044798;
-  height: 167px;
-  width: 420px;
-  box-shadow: 10px 10px 5px -3px rgba(75,75,75,0.77);
-
+  padding: $padding 60px;
+  background-color: #223F97;
+  background: url(../images/button-blue.png) no-repeat;
+  text-shadow: 0px -1px #333;
+  height: 150px;
+  width: 600px;
   &.closed {
-    background-color: #CEDBEB !important;
-    box-shadow: 10px 10px 5px -3px rgba(211, 211, 211, 0.77);
+    background: url(../images/button-red.png) no-repeat;
   }
 }
 
 .staff-name {
+  float: left;
   color: white;
-  font-size: 32px;
+  font-size: 36px;
   font-weight: bold;
+  padding: 20px 0px;
+  width: 350px;
 }
 
-.staff-profile {
+.staff-status {
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: inset 0 0 10px #000000;
+  width: 90px;
+  height: 90px;
+  float: right;
+  margin-top: 15px;
   position: relative;
-  bottom: 190px;
-  left: 240px;
-}
+  left: 40px;
 
-.staff-profile img {
-  border-left:4px solid #fff;
-  border-right:4px solid #fff;
-  width: 168px;
-  height: 203px;
-}
-.staff-profile.closed img {
-  filter: grayscale(100%);
+  img {
+    padding-left: 10px;
+  }
 }
 
 .workstation {
-  padding-top: $padding;
   color: white;
-  font-size: 26px;
+  font-size: 22px;
+  margin-top: $padding;
 }
